@@ -237,6 +237,9 @@
                 this.endDate = this.startDate.clone();
         }
 
+        if (typeof options.alwaysVisible === 'boolean')
+            this.alwaysVisible = options.alwaysVisible;
+
         if (typeof options.timePicker === 'boolean')
             this.timePicker = options.timePicker;
 
@@ -253,7 +256,7 @@
             this.autoApply = options.autoApply;
 
         if (typeof options.autoUpdateInput === 'boolean')
-            this.autoUpdateInput = options.autoUpdateInput;
+            this.autoUpdateInput = this.alwaysVisible || options.autoUpdateInput;
 
         if (typeof options.linkedCalendars === 'boolean')
             this.linkedCalendars = options.linkedCalendars;
@@ -263,9 +266,6 @@
 
         if (typeof options.alwaysShowCalendars === 'boolean')
             this.alwaysShowCalendars = options.alwaysShowCalendars;
-
-        if (typeof options.alwaysVisible === 'boolean')
-            this.alwaysVisible = options.alwaysVisible;
 
         // update day names order to firstDay
         if (this.locale.firstDay != 0) {
